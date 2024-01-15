@@ -23,6 +23,19 @@ namespace _01_Intro.Controllers
             return View();
         }
 
+        public IActionResult Person()
+        {
+            return View();
+        }
+        public IActionResult Career()
+        {
+            return View();
+        }
+        public IActionResult Life()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
