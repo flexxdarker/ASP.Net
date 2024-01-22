@@ -1,6 +1,8 @@
 ﻿using _02_MVC.Model.Data;
 using _02_MVC.Model.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace _02_MVC.Model.Controllers
 {
@@ -15,7 +17,7 @@ namespace _02_MVC.Model.Controllers
 
         public IActionResult Index()
         {
-            var products = context.Products.ToList();
+            var products = context.Products.Include(x => x.Category).ToList();
 
             return View(products);
         }
@@ -25,7 +27,14 @@ namespace _02_MVC.Model.Controllers
             return View();
         }
 
-		public IActionResult Create(Product model)
+        public IActionResult Create()
+        {
+			ViewBag.Categories = new SelectList(context.Categories, "Name", "Id");
+
+			return View();
+        }
+
+        public IActionResult Create(Product model)
 		{
 			if (!ModelState.IsValid)
 			{
