@@ -5,7 +5,7 @@
 <p>You can manage the available products here.</p>
 
 <div>
-	<a asp-action="Create" class="btn btn-warning">Create New Product</a>
+	<a asp-action="Create" class="btn btn-danger">Create New Product</a>
 </div>
 
 <table class="table table-striped">
@@ -29,11 +29,11 @@
 			@i.Name
 			@if (i.Discount > 0)
 			{
-				<span class="badge bg-warning text-black">SALE</span>
+				<span class="badge bg-danger text-black">SALE</span>
 			}
 			</td>
 			<td class="text-white">@i.Price$</td>
-			<td class="text-white">@i.Category</td>
+			<td class="text-white">@i.Category.Name</td>
 			<td class="text-white">@i.Discount%</td>
 			<td class="text-white">
 			@if (i.InStock)
