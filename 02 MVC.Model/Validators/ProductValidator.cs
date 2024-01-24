@@ -11,6 +11,8 @@ namespace _02_MVC.Model.Validators
                 .NotEmpty()
                 .MinimumLength(2)
                 .Matches("[A-Z].*").WithMessage("{PropertyName} must starts with uppercase letter.");
+            RuleFor(x => x.CategoryId)
+                .NotEmpty();
             RuleFor(x => x.Description)
                  .Length(10, 50000)
                  .Matches("[A-Z].*").WithMessage("{PropertyName} must starts with uppercase letter.");

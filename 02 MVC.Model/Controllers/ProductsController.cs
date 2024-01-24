@@ -14,7 +14,11 @@ namespace _02_MVC.Model.Controllers
         {
             this.context = context;
         }
+		private void LoadCategories()
+		{
+			ViewBag.Categories = new SelectList(context.Categories.ToList(), nameof(Category.Id), nameof(Category.Name));
 
+		}
         public IActionResult Index()
         {
             var products = context.Products.Include(x => x.Category).ToList();
@@ -29,15 +33,15 @@ namespace _02_MVC.Model.Controllers
 
         public IActionResult Create()
         {
-			ViewBag.Categories = new SelectList(context.Categories, "Name", "Id");
-
+			LoadCategories();
 			return View();
         }
-
+		[HttpPost]
         public IActionResult Create(Product model)
 		{
 			if (!ModelState.IsValid)
 			{
+				LoadCategories();
 				return View();
 			}
 
@@ -50,7 +54,7 @@ namespace _02_MVC.Model.Controllers
 		public IActionResult Details(int id)
 		{
 			var product = context.Products.Find(id);
-
+			context.Entry(product).Reference(x => x.Category).Load();
 			if (product == null) return NotFound();
 
 			return View(product);

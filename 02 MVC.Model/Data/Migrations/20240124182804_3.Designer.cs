@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _02_MVC.Model.Data;
 
@@ -10,9 +11,11 @@ using _02_MVC.Model.Data;
 namespace _02_MVC.Model.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class ShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240124182804_3")]
+    partial class _3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,6 +23,72 @@ namespace _02_MVC.Model.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("_02_MVC.Model.Data.Entities.Attributes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Lenght")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Widht")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Attributes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Height = 270,
+                            Lenght = 278,
+                            Widht = 260
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Height = 124,
+                            Lenght = 226,
+                            Widht = 157
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Height = 124,
+                            Lenght = 240,
+                            Widht = 157
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Height = 124,
+                            Lenght = 240,
+                            Widht = 157
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Height = 124,
+                            Lenght = 240,
+                            Widht = 157
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Height = 124,
+                            Lenght = 240,
+                            Widht = 157
+                        });
+                });
 
             modelBuilder.Entity("_02_MVC.Model.Data.Entities.Category", b =>
                 {
@@ -68,6 +137,9 @@ namespace _02_MVC.Model.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AttributesId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -97,6 +169,8 @@ namespace _02_MVC.Model.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AttributesId");
+
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
@@ -105,6 +179,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 1,
+                            AttributesId = 1,
                             CategoryId = 1,
                             Description = "Immersive Gaming Experience: Perfect for PlayStation 5, PS4 and PC gaming titles, the Driving Force simulates the feeling of driving a real car with precision steering and pressure-sensitive pedals\r\nPremium Control: The Driving Force feedback racing wheel provides a detailed simulation of driving a real car, with helical gearing delivering smooth, quiet steering and a hand-stitched leather cover\r\nCustomizable Pedals: These pressure-sensitive nonlinear brake pedals provide a responsive, accurate braking feel on a sturdy base - with adjustable pedal faces for finer control\r\n900-Degree Rotation: Lock-to-lock rotation of the Driving Force means you can turn the wheel around two and a half times, hand over hand on wide turns - just like a real F1 race car",
                             Discount = 0,
@@ -117,6 +192,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 2,
+                            AttributesId = 2,
                             CategoryId = 2,
                             Description = "The torque of 16 Nm and the professional direct drive (Direct Drive) can meet the needs of all racers in games and training!",
                             Discount = 0,
@@ -129,6 +205,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 3,
+                            AttributesId = 3,
                             CategoryId = 2,
                             Description = "The torque of 9 Nm and the professional direct drive (Direct Drive) can meet the needs of most racers in games and training!",
                             Discount = 0,
@@ -141,6 +218,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 4,
+                            AttributesId = 4,
                             CategoryId = 3,
                             Description = "The MOZA ES, a masterfully crafted sim racing steering wheel, is ready to make you jump into an immersive racing experience. Enjoy the luxury of hand-made stitch leather grips, combining comfort and style.",
                             Discount = 0,
@@ -153,6 +231,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 5,
+                            AttributesId = 5,
                             CategoryId = 3,
                             Description = "Introducing the MOZA KS Sim Racing Steering Wheel, a brand-new offering designed specifically for GT enthusiasts. This 300mm butterfly-style GT wheel brings the thrill of the track to your fingertips.",
                             Discount = 0,
@@ -165,6 +244,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 6,
+                            AttributesId = 6,
                             CategoryId = 4,
                             Description = "Master your speed like a pro with the MOZA CRP Pedals. Featuring a 3-stage clutch for superior control. The CNC aluminum pedal assembly ensures sturdiness and reliability. Adjust the angle to suit your preference and optimize your performance.",
                             Discount = 0,
@@ -178,11 +258,19 @@ namespace _02_MVC.Model.Migrations
 
             modelBuilder.Entity("_02_MVC.Model.Data.Entities.Product", b =>
                 {
+                    b.HasOne("_02_MVC.Model.Data.Entities.Attributes", "Attributes")
+                        .WithMany()
+                        .HasForeignKey("AttributesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("_02_MVC.Model.Data.Entities.Category", "Category")
                         .WithMany("Poducts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Attributes");
 
                     b.Navigation("Category");
                 });

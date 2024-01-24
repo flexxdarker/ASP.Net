@@ -2,7 +2,7 @@
 @model Product;
 
 <div class="text-start">
-    <a asp-action="Index" class="btn btn-warning my-3">Back</a>
+    <a asp-action="Index" class="btn btn-danger my-3">Back</a>
 </div>
 
 <div class="card  bg-dark">
@@ -20,7 +20,7 @@
                     </div>
             }
             <h5 class="card-title fs-1">@Model.Name</h5>
-            <p class="card-text fs-4">@Model.Price$ - @Model.Category</p>
+            <p class="card-text fs-4">@Model.Price$ - @Model.Category.Name</p>
             <a href="#" class="btn btn-success my-3">Buy</a>
             <p class="card-text">@Model.Description</p>
         </div>
