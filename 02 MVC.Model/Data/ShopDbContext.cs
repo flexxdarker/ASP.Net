@@ -19,7 +19,7 @@ namespace _02_MVC.Model.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Product>().HasData(new[]
             {
-                new Product() { Id = 1, Name = "Logitech g29",  CategoryId = 1, Discount = 0, Price = 296, ImageUrl = "https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/drivingforce/g920-gallery-3-1.png?v=1", InStock = true, Rating = 3, Description = "Immersive Gaming Experience: Perfect for PlayStation 5, PS4 and PC gaming titles, the Driving Force simulates the feeling of driving a real car with precision steering and pressure-sensitive pedals\r\nPremium Control: The Driving Force feedback racing wheel provides a detailed simulation of driving a real car, with helical gearing delivering smooth, quiet steering and a hand-stitched leather cover\r\nCustomizable Pedals: These pressure-sensitive nonlinear brake pedals provide a responsive, accurate braking feel on a sturdy base - with adjustable pedal faces for finer control\r\n900-Degree Rotation: Lock-to-lock rotation of the Driving Force means you can turn the wheel around two and a half times, hand over hand on wide turns - just like a real F1 race car" },
+                new Product() { Id = 1, Name = "Logitech g29",  CategoryId = 1, Discount = 0, Price = 296, ImageUrl = "https://content.rozetka.com.ua/goods/images/big/322365492.jpg", InStock = true, Rating = 3, Description = "Immersive Gaming Experience: Perfect for PlayStation 5, PS4 and PC gaming titles, the Driving Force simulates the feeling of driving a real car with precision steering and pressure-sensitive pedals\r\nPremium Control: The Driving Force feedback racing wheel provides a detailed simulation of driving a real car, with helical gearing delivering smooth, quiet steering and a hand-stitched leather cover\r\nCustomizable Pedals: These pressure-sensitive nonlinear brake pedals provide a responsive, accurate braking feel on a sturdy base - with adjustable pedal faces for finer control\r\n900-Degree Rotation: Lock-to-lock rotation of the Driving Force means you can turn the wheel around two and a half times, hand over hand on wide turns - just like a real F1 race car" },
                 new Product() { Id = 2, Name = "Moza R12",CategoryId = 2, Discount = 0, Price = 296, ImageUrl = "https://simracinggear.com.ua/wp-content/uploads/2023/12/%D0%A0%D1%83%D0%BB%D1%8C%D0%BE%D0%B2%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B0-Moza-R12.png", InStock = true, Rating = 4, Description = "The torque of 16 Nm and the professional direct drive (Direct Drive) can meet the needs of all racers in games and training!" },
                 new Product() { Id = 3, Name = "Moza R9 V2",CategoryId = 2, Discount = 0, Price = 296, ImageUrl = "https://simracinggear.com.ua/wp-content/uploads/2023/05/MOZA-R9-Wheel-Base1.webp", InStock = true, Rating = 5, Description = "The torque of 9 Nm and the professional direct drive (Direct Drive) can meet the needs of most racers in games and training!" },
                 new Product() { Id = 4, Name = "Moza ES Steering Wheel",CategoryId = 3, Discount = 0, Price = 129, ImageUrl = "https://simracinggear.com.ua/wp-content/uploads/2023/05/ES-Steering-Wheel-1.png", InStock = true, Rating = 5, Description = "The MOZA ES, a masterfully crafted sim racing steering wheel, is ready to make you jump into an immersive racing experience. Enjoy the luxury of hand-made stitch leather grips, combining comfort and style."},
@@ -28,9 +28,9 @@ namespace _02_MVC.Model.Data
             });
             modelBuilder.Entity<Category>().HasData(new[]
             {
-                new Category() { Id = 1, Name = "Bundles"},
+                new Category() { Id = 1, Name = "Bundle"},
                 new Category() { Id = 2, Name = "Wheel Base"},
-                new Category() { Id = 3, Name = "Steering Wheels"},
+                new Category() { Id = 3, Name = "Steering Wheel"},
                 new Category() { Id = 4, Name = "Pedals"}
             });
             //modelBuilder.Entity<Attributes>().HasData(new[]

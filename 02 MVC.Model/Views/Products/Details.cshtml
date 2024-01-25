@@ -5,7 +5,7 @@
     <a asp-action="Index" class="btn btn-danger my-3">Back</a>
 </div>
 
-<div class="card  bg-dark">
+<div class="card background information">
     <h5 class="card-header">Product Information</h5>
     <div>
     <div class="d-flex">
@@ -21,7 +21,14 @@
             }
             <h5 class="card-title fs-1">@Model.Name</h5>
             <p class="card-text fs-4">@Model.Price$ - @Model.Category.Name</p>
-            <a href="#" class="btn btn-success my-3">Buy</a>
+            @if(Model.InStock == true)
+            {
+                <a href="#" class="btn btn-success my-3">Buy</a>
+            }
+            else
+            {
+                    <a href="#" class="btn btn-secondary my-3 disabled" aria-disabled="true">Out of stock</a>
+            }
             <p class="card-text">@Model.Description</p>
         </div>
     </div>
