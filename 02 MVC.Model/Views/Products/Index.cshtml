@@ -33,7 +33,7 @@
 			}
 			</td>
 			<td class="text-white">@i.Price$</td>
-			<td class="text-white">@i.Category.Name</td>
+			<td class="text-white">@i.Category?.Name</td>
 			<td class="text-white">@i.Discount%</td>
 			<td class="text-white">
 			@if (i.InStock)
@@ -47,8 +47,11 @@
 			</td>
 			<td>
 				<div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn btn-dark" asp-action="Details" asp-route-id="@i.Id">
-						<i class="bi bi-info-lg"></i>
+					<a class="btn " asp-action="Details" asp-route-id="@i.Id">
+						<i class="bi bi-info-lg text-white"></i>
+					</a>
+					<a class="btn btn-light" asp-action="Edit" asp-route-id="@i.Id">
+						<i class="bi bi-pencil-square"></i>
 					</a>
 					<a class="btn btn-danger" asp-action="Delete" asp-route-id="@i.Id">
 						<i class="bi bi-trash3-fill"></i>

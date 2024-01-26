@@ -1,5 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using _02_MVC.Model.Data.Entities;
+@model List<Product>;
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    @foreach (var i in Model)
+    {
+        <div class="col">
+           <partial name="_CardPartial" model="@i" />
+        </div>
+    }
+</div>

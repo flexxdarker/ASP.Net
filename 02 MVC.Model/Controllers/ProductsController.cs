@@ -51,16 +51,41 @@ namespace _02_MVC.Model.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
-		public IActionResult Details(int id)
+		public IActionResult Details(int id, string? returnUrl)
 		{
 			var product = context.Products.Find(id);
 			context.Entry(product).Reference(x => x.Category).Load();
 			if (product == null) return NotFound();
-
-			return View(product);
+            ViewBag.ReturnUrl = returnUrl;
+            return View(product);
 		}
+        public IActionResult Edit(int id)
+        {
+            var product = context.Products.Find(id);
+            if (product == null) return NotFound();
 
-		public IActionResult Delete(int id)
+            LoadCategories();
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product model)
+        {
+            if (!ModelState.IsValid)
+            {
+                LoadCategories();
+                return View();
+            }
+
+            context.Products.Update(model);
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        public IActionResult Delete(int id)
 		{
 			var product = context.Products.Find(id);
 
