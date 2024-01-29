@@ -47,7 +47,7 @@
 			</td>
 			<td>
 				<div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn " asp-action="Details" asp-route-id="@i.Id">
+						<a class="btn " asp-action="Details" asp-route-id="@i.Id" asp-route-returnUrl="@Context.Request.Path">
 						<i class="bi bi-info-lg text-white"></i>
 					</a>
 					<a class="btn btn-light" asp-action="Edit" asp-route-id="@i.Id">

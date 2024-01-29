@@ -19,4 +19,23 @@
 }
 .information{
     border: 1px solid white;
+    box-shadow: 0px 0px 10px 2px white;
+}
+.card-title a{
+    color: white;
+    text-decoration: none;
+}
+.card-title img {
+    height: 200px;
+    object-fit: contain;
+    padding: 8px;
+    border-radius: 8px;
+}
+.details-card .card-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+}
+.white-back{
+    background-color:white;
 }

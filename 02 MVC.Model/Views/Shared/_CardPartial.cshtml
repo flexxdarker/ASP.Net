@@ -1,11 +1,11 @@
 ﻿@using _02_MVC.Model.Data.Entities;
 @model Product;
 
-<div class="card h-100 home-card">
+<div class="card h-100 card-body background information">
     <a asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path">
-        <img src="@Model.ImageUrl" class="card-img-top" alt="Product Image">
+        <img src="@Model.ImageUrl" class="card-img-top white-back" alt="Product Image">
     </a>
-    <div class="card-body">
+    <div class="background">
         <h5 class="card-title">
             <a asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path">@Model.Name</a>
         </h5>

@@ -36,6 +36,7 @@ namespace _02_MVC.Model.Controllers
 			LoadCategories();
 			return View();
         }
+
 		[HttpPost]
         public IActionResult Create(Product model)
 		{
@@ -59,6 +60,7 @@ namespace _02_MVC.Model.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(product);
 		}
+
         public IActionResult Edit(int id)
         {
             var product = context.Products.Find(id);
