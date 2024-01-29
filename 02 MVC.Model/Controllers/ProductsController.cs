@@ -72,7 +72,7 @@ namespace DataAccess.Model.Controllers
             if (product == null) return NotFound();
 
             LoadCategories();
-            return View(product);
+            return View(mapper.Map<ProductDto>(product));
         }
 
         [HttpPost]
