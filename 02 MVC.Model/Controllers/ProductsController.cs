@@ -1,27 +1,31 @@
-﻿using _02_MVC.Model.Data;
-using _02_MVC.Model.Data.Entities;
+﻿using AutoMapper;
+using BusinessLogic.DTOs;
+using DataAccess.Model.Data;
+using DataAccess.Model.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace _02_MVC.Model.Controllers
+namespace DataAccess.Model.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ShopDbContext context;
+        private readonly IMapper mapper;
 
-        public ProductsController(ShopDbContext context)
+        public ProductsController(ShopDbContext context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
 		private void LoadCategories()
 		{
-			ViewBag.Categories = new SelectList(context.Categories.ToList(), nameof(Category.Id), nameof(Category.Name));
-
+            var categories = mapper.Map<List<CategoryDto>>(context.Categories.ToList());
+            ViewBag.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Name));
 		}
         public IActionResult Index()
         {
-            var products = context.Products.Include(x => x.Category).ToList();
+            var products = mapper.Map<List<ProductDto>>(context.Products.Include(x=>x.Category).ToList());
 
             return View(products);
         }
@@ -38,7 +42,7 @@ namespace _02_MVC.Model.Controllers
         }
 
 		[HttpPost]
-        public IActionResult Create(Product model)
+        public IActionResult Create(ProductDto model)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -46,7 +50,7 @@ namespace _02_MVC.Model.Controllers
 				return View();
 			}
 
-			context.Products.Add(model);
+			context.Products.Add(mapper.Map<Product>(model));
 			context.SaveChanges();
 
 			return RedirectToAction(nameof(Index));
@@ -58,7 +62,8 @@ namespace _02_MVC.Model.Controllers
 			context.Entry(product).Reference(x => x.Category).Load();
 			if (product == null) return NotFound();
             ViewBag.ReturnUrl = returnUrl;
-            return View(product);
+            var dto = mapper.Map<ProductDto>(product);
+            return View(dto);
 		}
 
         public IActionResult Edit(int id)
@@ -71,7 +76,7 @@ namespace _02_MVC.Model.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Product model)
+        public IActionResult Edit(ProductDto model)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +84,7 @@ namespace _02_MVC.Model.Controllers
                 return View();
             }
 
-            context.Products.Update(model);
+            context.Products.Update(mapper.Map<Product>(model));
             context.SaveChanges();
 
             return RedirectToAction(nameof(Index));

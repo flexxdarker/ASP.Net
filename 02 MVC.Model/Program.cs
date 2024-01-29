@@ -1,7 +1,8 @@
-using _02_MVC.Model.Data;
+using BusinessLogic;
+using DataAccess.Model.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace _02_MVC.Model
+namespace DataAccess.Model
 {
     public class Program
     {
@@ -12,6 +13,9 @@ namespace _02_MVC.Model
             builder.Services.AddDbContext<ShopDbContext>(opts => opts.UseSqlServer(connStr));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddAutoMapper();
+            builder.Services.AddFluentValidators();
 
             var app = builder.Build();
 

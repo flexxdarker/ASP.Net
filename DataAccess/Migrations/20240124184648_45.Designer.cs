@@ -2,17 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _02_MVC.Model.Data;
+using DataAccess.Model.Data;
 
 #nullable disable
 
-namespace _02_MVC.Model.Migrations
+namespace DataAccess.Model.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class ShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240124184648_45")]
+    partial class _45
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Bundle"
+                            Name = "Bundles"
                         },
                         new
                         {
@@ -51,7 +54,7 @@ namespace _02_MVC.Model.Migrations
                         new
                         {
                             Id = 3,
-                            Name = "Steering Wheel"
+                            Name = "Steering Wheels"
                         },
                         new
                         {
@@ -108,7 +111,7 @@ namespace _02_MVC.Model.Migrations
                             CategoryId = 1,
                             Description = "Immersive Gaming Experience: Perfect for PlayStation 5, PS4 and PC gaming titles, the Driving Force simulates the feeling of driving a real car with precision steering and pressure-sensitive pedals\r\nPremium Control: The Driving Force feedback racing wheel provides a detailed simulation of driving a real car, with helical gearing delivering smooth, quiet steering and a hand-stitched leather cover\r\nCustomizable Pedals: These pressure-sensitive nonlinear brake pedals provide a responsive, accurate braking feel on a sturdy base - with adjustable pedal faces for finer control\r\n900-Degree Rotation: Lock-to-lock rotation of the Driving Force means you can turn the wheel around two and a half times, hand over hand on wide turns - just like a real F1 race car",
                             Discount = 0,
-                            ImageUrl = "https://content.rozetka.com.ua/goods/images/big/322365492.jpg",
+                            ImageUrl = "https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/drivingforce/g920-gallery-3-1.png?v=1",
                             InStock = true,
                             Name = "Logitech g29",
                             Price = 296m,

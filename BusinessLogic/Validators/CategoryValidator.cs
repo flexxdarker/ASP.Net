@@ -1,9 +1,10 @@
-﻿using _02_MVC.Model.Data.Entities;
+﻿using DataAccess.Model.Data.Entities;
+using BusinessLogic.DTOs;
 using FluentValidation;
 
-namespace _02_MVC.Model.Validators
+namespace DataAccess.Model.Validators
 {
-    public class CategoryValidator : AbstractValidator<Category>
+    public class CategoryValidator : AbstractValidator<CategoryDto>
     {
         public CategoryValidator() {
             RuleFor(x => x.Name)

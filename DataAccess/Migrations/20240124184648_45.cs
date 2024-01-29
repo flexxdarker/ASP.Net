@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace _02_MVC.Model.Migrations
+namespace DataAccess.Model.Migrations
 {
     /// <inheritdoc />
     public partial class _45 : Migration

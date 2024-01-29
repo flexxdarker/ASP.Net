@@ -1,4 +1,4 @@
-﻿namespace _02_MVC.Model.Data.Entities
+﻿namespace DataAccess.Model.Data.Entities
 {
     public class Category
     {

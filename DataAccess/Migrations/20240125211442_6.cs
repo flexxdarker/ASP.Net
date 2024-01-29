@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace _02_MVC.Model.Migrations
+namespace DataAccess.Model.Migrations
 {
     /// <inheritdoc />
     public partial class _6 : Migration

@@ -1,5 +1,4 @@
-﻿@using _02_MVC.Model.Data.Entities
-@model Product;
+﻿@model ProductDto;
 
 <div class="card background details-card">
     <h5 class="card-header text-center ">
@@ -20,7 +19,7 @@
                 </div>
             }
             <h5 class="card-title fs-1">@Model.Name</h5>
-            <p class="card-text fs-4">@Model.Price$ - @Model.Category?.Name</p>
+            <p class="card-text fs-4">@Model.Price$ - @Model.CategoryName</p>
             @if (Model.InStock == true)
             {
                  <a href="#" class="btn btn-success my-3">Buy</a>

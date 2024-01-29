@@ -1,11 +1,10 @@
-﻿@using _02_MVC.Model.Data.Entities;
-@model Product;
+﻿@model ProductDto;
 
 <div class="card h-100 card-body background information">
     <a asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path">
         <img src="@Model.ImageUrl" class="card-img-top white-back" alt="Product Image">
     </a>
-    <div class="background">
+    <div class="background text-center">
         <h5 class="card-title">
             <a asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path">@Model.Name</a>
         </h5>
@@ -16,11 +15,11 @@
                 <span class="badge bg-danger">SALE</span>
             }
             <br />
-            @Model.Category?.Name
+            @Model.CategoryName
         </p>
         <div>
-            <button type="button" class="btn btn-primary mb-1">Add to Cart</button>
-            <button type="button" class="btn btn-success mb-1">Buy Now</button>
+            <button type="button" class="btn btn-danger text-dark mb-1">Add to Cart</button>
+            <button type="button" class="btn btn-light mb-1 text-dark">Buy Now</button>
         </div>
     </div>
 </div>

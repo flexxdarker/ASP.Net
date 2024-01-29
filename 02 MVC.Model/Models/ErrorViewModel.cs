@@ -1,4 +1,4 @@
-namespace _02_MVC.Model.Models
+namespace DataAccess.Model.Models
 {
     public class ErrorViewModel
     {

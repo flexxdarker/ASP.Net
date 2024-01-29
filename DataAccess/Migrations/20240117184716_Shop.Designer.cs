@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _02_MVC.Model.Data;
+using DataAccess.Model.Data;
 
 #nullable disable
 
-namespace _02_MVC.Model.Migrations
+namespace DataAccess.Model.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
     [Migration("20240117184716_Shop")]

@@ -1,17 +1,14 @@
-﻿using _02_MVC.Model.Data.Entities;
+﻿using DataAccess.Model.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
-namespace _02_MVC.Model.Data
+namespace DataAccess.Model.Data
 {
     public class ShopDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public ShopDbContext()
-        {
-
-        }
+        public ShopDbContext() { }
         public ShopDbContext(DbContextOptions options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

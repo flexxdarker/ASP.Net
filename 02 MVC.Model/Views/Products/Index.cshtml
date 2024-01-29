@@ -1,5 +1,4 @@
-﻿@using _02_MVC.Model.Data.Entities;
-@model List<Product>;
+﻿@model List<ProductDto>;
 
 <h1>Product Panel</h1>
 <p>You can manage the available products here.</p>
@@ -33,7 +32,7 @@
 			}
 			</td>
 			<td class="text-white">@i.Price$</td>
-			<td class="text-white">@i.Category?.Name</td>
+			<td class="text-white">@i.CategoryName</td>
 			<td class="text-white">@i.Discount%</td>
 			<td class="text-white">
 			@if (i.InStock)
