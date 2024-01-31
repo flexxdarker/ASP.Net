@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLogic.DTOs;
+using BusinessLogic.Interfaces;
 using DataAccess.Model.Data;
 using DataAccess.Model.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,20 +12,19 @@ namespace DataAccess.Model.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ShopDbContext context;
+        private readonly IHomeService homeService;
         private readonly IMapper mapper;
 
-        public HomeController(ILogger<HomeController> logger, ShopDbContext context, IMapper mapper)
+        public HomeController(ILogger<HomeController> logger, IHomeService homeService, IMapper mapper)
         {
             _logger = logger;
-            this.context = context;
+            this.homeService = homeService;
             this.mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            var products = mapper.Map<List<ProductDto>>(context.Products.ToList());
-            return View(products);
+            return View(homeService.GetAllProducts());
         }
 
         public IActionResult Privacy()

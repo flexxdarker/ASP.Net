@@ -17,6 +17,9 @@
 }
 .information{
     border: 1px solid white;
+    transition: .5s;
+}
+.information:hover{
     box-shadow: 0px 0px 8px 2px white;
 }
 .card-title a{
