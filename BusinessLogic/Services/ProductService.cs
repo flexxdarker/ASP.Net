@@ -46,12 +46,20 @@ namespace BusinessLogic.Services
         {
             var item = context.Products.Find(id);
             if(item == null) { return null; }
-            context.Entry(item).Reference(x => x.Category).LoadAsync();
+            context.Entry(item).Reference(x => x.Category).Load();
             var dto = mapper.Map<ProductDto>(item);
             return dto;
         }
 
-        public IEnumerable<ProductDto> GetAll()
+		public IEnumerable<ProductDto> Get(IEnumerable<int> ids)
+		{
+			return mapper.Map<List<ProductDto>>(context.Products
+				.Include(x => x.Category)
+				.Where(x => ids.Contains(x.Id))
+				.ToList());
+		}
+
+		public IEnumerable<ProductDto> GetAll()
         {
             return mapper.Map<List<ProductDto>>(context.Products.Include(x=>x.Category).ToList());
         }

@@ -40,3 +40,11 @@
 .white-back{
     background-color:white;
 }
+
+.zoom {
+    transition: .2s;
+}
+
+.zoom:hover {
+    transform: scale(3.2);
+}

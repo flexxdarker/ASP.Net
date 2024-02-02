@@ -11,6 +11,7 @@
 	<thead>
 		<tr>
 			<th class="text-white" scope="col">#</th>
+			<th class="text-white" scope="col">Image</th>
 			<th class="text-white" scope="col">Name</th>
 			<th class="text-white" scope="col">Price</th>
 			<th class="text-white" scope="col">Category</th>
@@ -24,6 +25,9 @@
 		{
 		<tr class="align-middle">
 			<th class="text-white" scope="row">@i.Id</th>
+			<th scope="row">
+				<img height="40" class="rounded-2 zoom" src="@i.ImageUrl" alt="@i.Name" />
+			</th>
 			<td class="text-white">
 			@i.Name
 			@if (i.Discount > 0)

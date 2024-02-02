@@ -1,0 +1,45 @@
+﻿@model List<ProductDto>;
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th class="text-white" scope="col">#</th>
+			<th class="text-white" scope="col">Image</th>
+			<th class="text-white" scope="col">Name</th>
+			<th class="text-white" scope="col">Price</th>
+			<th class="text-white" scope="col">Category</th>
+			<th class="text-white" scope="col">Discount</th>
+			<th class="text-white" scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var i in Model)
+		{
+			<tr class="align-middle">
+				<th class="text-white" scope="row">@i.Id</th>
+				<th scope="row">
+					<img height="40" class="rounded-2 zoom" src="@i.ImageUrl" alt="@i.Name" />
+				</th>
+				<td class="text-white">
+					@i.Name
+					@if (i.Discount > 0)
+					{
+						<span class="badge bg-danger text-black">SALE</span>
+					}
+				</td>
+				<td class="text-white">@i.Price$</td>
+				<td class="text-white">@i.CategoryName</td>
+				<td class="text-white">@i.Discount%</td>
+				<td>
+					<div class="btn-group" role="group" aria-label="Basic example">
+						<a class="btn btn-danger" asp-action="Delete" asp-route-id="@i.Id">
+							<i class="bi bi-trash3-fill"></i>
+						</a>
+					</div>
+
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<p>Items: @Model.Count</p>
