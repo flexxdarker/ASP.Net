@@ -1,11 +1,11 @@
 ﻿using DataAccess.Model.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using static System.Net.WebRequestMethods;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DataAccess.Model.Data
 {
-    public class ShopDbContext : DbContext
-    {
+    public class ShopDbContext : IdentityDbContext
+	{
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public ShopDbContext() { }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {
-    public class ProductService : IProductService
+    public class ProductService : IProductsService
     {
         private readonly IMapper mapper;
         private readonly ShopDbContext context;

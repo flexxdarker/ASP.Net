@@ -29,7 +29,7 @@ namespace BusinessLogic
         }
         public static void AddCustomServices(this IServiceCollection services)
         {
-            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductsService, ProductService>();
             services.AddScoped<IHomeService, HomeService>();
         }
     }

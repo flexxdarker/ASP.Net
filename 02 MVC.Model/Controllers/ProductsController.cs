@@ -11,10 +11,10 @@ namespace DataAccess.Model.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly IProductService productService;
+        private readonly IProductsService productService;
         private readonly IMapper mapper;
 
-        public ProductsController(IProductService productService, IMapper mapper)
+        public ProductsController(IProductsService productService, IMapper mapper)
         {
             this.productService = productService;
             this.mapper = mapper;

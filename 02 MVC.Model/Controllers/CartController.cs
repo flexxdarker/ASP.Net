@@ -8,9 +8,9 @@ namespace _02_MVC.Model.Controllers
 {
 	public class CartController : Controller
 	{
-		private readonly IProductService productService;
+		private readonly IProductsService productService;
 		const string key = "cart_items_key";
-		public CartController(IProductService productService)
+		public CartController(IProductsService productService)
         {
 			this.productService = productService;
 		}
@@ -18,8 +18,7 @@ namespace _02_MVC.Model.Controllers
         public IActionResult Index()
 		{
 			var ids = HttpContext.Session.Get<List<int>>(key) ?? new();
-			HttpContext.Session.Set(key, ids);
-			return View();
+			return View(productService.Get(ids));
 		}
 
 		public IActionResult Add(int id)

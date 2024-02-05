@@ -6,6 +6,8 @@ using BusinessLogic;
 using DataAccess;
 using BusinessLogic.Services;
 using BusinessLogic.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using DataAccess.Model.Data;
 
 namespace DataAccess.Model
 {
@@ -19,12 +21,25 @@ namespace DataAccess.Model
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext(connStr);
 
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ShopDbContext>();
+
+
             builder.Services.AddAutoMapper();
             builder.Services.AddFluentValidators();
 
             builder.Services.AddCustomServices();
+			builder.Services.AddScoped<ICartService, CartService>();
 
-            var app = builder.Build();
+			builder.Services.AddDistributedMemoryCache();
+
+			builder.Services.AddSession(options =>
+			{
+				options.IdleTimeout = TimeSpan.FromSeconds(10);
+				options.Cookie.HttpOnly = true;
+				options.Cookie.IsEssential = true;
+			});
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -39,7 +54,11 @@ namespace DataAccess.Model
 
             app.UseRouting();
 
-            app.UseAuthorization();
+			app.UseSession();
+
+			app.UseAuthorization();
+
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",

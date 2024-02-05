@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Interfaces
 {
-    public interface IProductService
+    public interface IProductsService
     {
         IEnumerable<ProductDto> GetAll();
 		IEnumerable<ProductDto> Get(IEnumerable<int> ids);
