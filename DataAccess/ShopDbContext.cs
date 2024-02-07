@@ -1,13 +1,15 @@
 ﻿using DataAccess.Model.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using DataAccess.Entities;
 
 namespace DataAccess.Model.Data
 {
-    public class ShopDbContext : IdentityDbContext
+    public class ShopDbContext : IdentityDbContext<User>
 	{
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public ShopDbContext() { }
         public ShopDbContext(DbContextOptions options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

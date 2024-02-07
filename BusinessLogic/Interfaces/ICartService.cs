@@ -10,6 +10,7 @@ namespace BusinessLogic.Interfaces
 	public interface ICartService
 	{
 		IEnumerable<ProductDto> GetProducts();
+		IEnumerable<int> GetProducIds();
 		void Add(int id);
 		void Delete(int id);
 		int GetCount();

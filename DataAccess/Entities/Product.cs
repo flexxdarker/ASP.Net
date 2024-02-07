@@ -1,4 +1,6 @@
-﻿namespace DataAccess.Model.Data.Entities
+﻿using DataAccess.Entities;
+
+namespace DataAccess.Model.Data.Entities
 {
     public class Product
     {
@@ -12,5 +14,6 @@
         public string ImageUrl { get; set; }
         public int Discount { get; set; }
         public int Rating { get; set; }
+        public ICollection<Order>? Orders { get; set; }
     }
 }

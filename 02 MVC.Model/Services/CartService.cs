@@ -57,5 +57,10 @@ namespace BusinessLogic.Services
 
 			SaveCartItems(ids);
 		}
-	}
+
+        public IEnumerable<int> GetProducIds()
+        {
+			return GetCartItems();
+        }
+    }
 }

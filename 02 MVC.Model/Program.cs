@@ -8,6 +8,7 @@ using BusinessLogic.Services;
 using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using DataAccess.Model.Data;
+using DataAccess.Entities;
 
 namespace DataAccess.Model
 {
@@ -21,7 +22,7 @@ namespace DataAccess.Model
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext(connStr);
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ShopDbContext>();
+            builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ShopDbContext>();
 
 
             builder.Services.AddAutoMapper();
