@@ -1,5 +1,6 @@
 ﻿using _02_MVC.Model.Helper;
 using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
@@ -8,32 +9,35 @@ namespace _02_MVC.Model.Controllers
 {
 	public class CartController : Controller
 	{
-		private readonly IProductsService productService;
-		const string key = "cart_items_key";
-		public CartController(IProductsService productService)
+        private readonly ICartService cartService;
+
+        public CartController(ICartService cartService)
         {
-			this.productService = productService;
-		}
+            this.cartService = cartService;
+        }
 
-        public IActionResult Index()
-		{
-			var ids = HttpContext.Session.Get<List<int>>(key) ?? new();
-			return View(productService.Get(ids));
-		}
+        public IActionResult Index(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View(cartService.GetProducts());
+        }
 
-		public IActionResult Add(int id)
-		{
-			var ids = HttpContext.Session.Get<List<int>>(key) ?? new();
-			ids.Add(id);
+        public IActionResult Add(int id, string returnUrl)
+        {
+            cartService.Add(id);
 
-			HttpContext.Session.SetString(key, JsonSerializer.Serialize(ids));
+            //ViewBag.ToastMessage = "Product added to your cart successfully!";
+            TempData["ToastMessage"] = "Product added to your cart successfully!";
 
-			return RedirectToAction(nameof(Index));
-		}
-		public IActionResult Remove(int id)
-		{
-			// TODO
-			return RedirectToAction(nameof(Index));
-		}
-	}
+            return Redirect(returnUrl);
+        }
+
+        public IActionResult Remove(int id, string returnUrl)
+        {
+            cartService.Delete(id);
+            TempData["ToastMessage"] = "Product removed from your cart successfully!";
+
+            return Redirect(returnUrl);
+        }
+    }
 }

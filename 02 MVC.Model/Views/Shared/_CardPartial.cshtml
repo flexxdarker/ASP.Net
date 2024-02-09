@@ -18,7 +18,7 @@
             @Model.CategoryName
         </p>
         <div>
-            <a type="button" class="btn btn-danger text-dark mb-1">Add to Cart</a>
+            <a type="button" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path" class="btn btn-danger text-dark mb-1">Add to Cart</a>
             <button type="button" class="btn btn-light mb-1 text-dark">Buy Now</button>
         </div>
     </div>

@@ -23,7 +23,7 @@ namespace DataAccess.Model.Data
                 new Product() { Id = 3, Name = "Moza R9 V2",CategoryId = 2, Discount = 0, Price = 296, ImageUrl = "https://simracinggear.com.ua/wp-content/uploads/2023/05/MOZA-R9-Wheel-Base1.webp", InStock = true, Rating = 5, Description = "The torque of 9 Nm and the professional direct drive (Direct Drive) can meet the needs of most racers in games and training!" },
                 new Product() { Id = 4, Name = "Moza ES Steering Wheel",CategoryId = 3, Discount = 0, Price = 129, ImageUrl = "https://simracinggear.com.ua/wp-content/uploads/2023/05/ES-Steering-Wheel-1.png", InStock = true, Rating = 5, Description = "The MOZA ES, a masterfully crafted sim racing steering wheel, is ready to make you jump into an immersive racing experience. Enjoy the luxury of hand-made stitch leather grips, combining comfort and style."},
                 new Product() { Id = 5, Name = "KS Steering Wheel",CategoryId = 3, Discount = 0, Price = 279, ImageUrl = "https://i0.wp.com/mozaracing.com/wp-content/uploads/2023/06/KS-Steering-Wheel-1.webp?fit=1000%2C1000&quality=80&ssl=1", InStock = true, Rating = 5, Description = "Introducing the MOZA KS Sim Racing Steering Wheel, a brand-new offering designed specifically for GT enthusiasts. This 300mm butterfly-style GT wheel brings the thrill of the track to your fingertips."},
-                new Product() { Id = 6, Name = "CRP Pedals", CategoryId =4,Discount =0, Price = 459, ImageUrl = "https://i0.wp.com/mozaracing.com/wp-content/uploads/2021/06/CRP-Product-1.webp?fit=1000%2C1000&quality=80&ssl=1", InStock = true, Rating = 4, Description = "Master your speed like a pro with the MOZA CRP Pedals. Featuring a 3-stage clutch for superior control. The CNC aluminum pedal assembly ensures sturdiness and reliability. Adjust the angle to suit your preference and optimize your performance."}
+                new Product() { Id = 6, Name = "CRP Pedals", CategoryId = 4,Discount = 0, Price = 459, ImageUrl = "https://i0.wp.com/mozaracing.com/wp-content/uploads/2021/06/CRP-Product-1.webp?fit=1000%2C1000&quality=80&ssl=1", InStock = true, Rating = 4, Description = "Master your speed like a pro with the MOZA CRP Pedals. Featuring a 3-stage clutch for superior control. The CNC aluminum pedal assembly ensures sturdiness and reliability. Adjust the angle to suit your preference and optimize your performance."}
             });
             modelBuilder.Entity<Category>().HasData(new[]
             {
@@ -40,7 +40,6 @@ namespace DataAccess.Model.Data
             //    new Attributes() { Id = 4, Height = 124, Widht = 157, Lenght = 240},
             //    new Attributes() { Id = 5, Height = 124, Widht = 157, Lenght = 240},
             //    new Attributes() { Id = 6, Height = 124, Widht = 157, Lenght = 240},
-
             //});
         }
     }

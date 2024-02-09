@@ -32,15 +32,17 @@
 				<td class="text-white">@i.Discount%</td>
 				<td>
 					<div class="btn-group" role="group" aria-label="Basic example">
-						<a class="btn btn-danger" asp-action="Delete" asp-route-id="@i.Id">
+						<a class="btn btn-danger" asp-controller="Cart" asp-action="Delete" asp-route-id="@i.Id">
 							<i class="bi bi-trash3-fill"></i>
 						</a>
 					</div>
-
 				</td>
 			</tr>
 		}
 	</tbody>
 </table>
+<div>
+	<a asp-controller="Orders" asp-action="Create" class="btn btn-success mt-3">Confirm</a>
+</div>
 
-<p>Items: @Model.Count</p>
+<p>Items: @Model.Count </p>

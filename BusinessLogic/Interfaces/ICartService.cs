@@ -14,5 +14,6 @@ namespace BusinessLogic.Interfaces
 		void Add(int id);
 		void Delete(int id);
 		int GetCount();
+		int Summ();
 	}
 }

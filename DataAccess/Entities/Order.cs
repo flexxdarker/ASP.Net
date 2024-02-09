@@ -11,7 +11,7 @@ namespace DataAccess.Entities
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public string userId { get; set; }
+        public string UserId { get; set; }
         public User? User { get; set; }
         public decimal OrderSumm { get; set; }
         public ICollection<Product>? Products { get; set; }

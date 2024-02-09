@@ -62,5 +62,10 @@ namespace BusinessLogic.Services
         {
 			return GetCartItems();
         }
-    }
+
+		public int Summ()
+		{
+			return 2;
+		}
+	}
 }

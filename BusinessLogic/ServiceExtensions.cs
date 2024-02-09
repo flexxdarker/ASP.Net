@@ -31,6 +31,7 @@ namespace BusinessLogic
         {
             services.AddScoped<IProductsService, ProductService>();
             services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IOrdersService, OrdersService>();
         }
     }
 }

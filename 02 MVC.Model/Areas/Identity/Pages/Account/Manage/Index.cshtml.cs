@@ -59,6 +59,11 @@ namespace _02_MVC.Model.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required]
+            [DataType(DataType.Date)]
+            [Display(Name = "Birthdate")]
+            public DateTime Birthdate { get; set; }
         }
 
         private async Task LoadAsync(User user)
@@ -70,7 +75,8 @@ namespace _02_MVC.Model.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Birthdate = user.Date
             };
         }
 
@@ -111,7 +117,20 @@ namespace _02_MVC.Model.Areas.Identity.Pages.Account.Manage
                 }
             }
 
-            await _signInManager.RefreshSignInAsync(user);
+			var birthdate = user.Date;
+			if (Input.Birthdate != birthdate)
+			{
+				user.Date = Input.Birthdate;
+				var result = await _userManager.UpdateAsync(user);
+
+				if (!result.Succeeded)
+				{
+					StatusMessage = "Unexpected error when trying to set phone number.";
+					return RedirectToPage();
+				}
+			}
+
+			await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }

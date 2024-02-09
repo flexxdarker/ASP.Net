@@ -34,6 +34,11 @@
                 <label asp-for="Input.NewEmail" class="form-label text-dark"></label>
                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
             </div>
+            @*<div class="form-floating mb-3">
+                <input asp-for="Input.Birthdate" class="form-control" placeholder="Please enter your birthdate." />
+                <label asp-for="Input.Birthdate" class="form-label"></label>
+                <span asp-validation-for="Input.Birthdate" class="text-danger"></span>
+            </div>*@
             <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary">Change email</button>
         </form>
     </div>

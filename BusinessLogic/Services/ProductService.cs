@@ -68,5 +68,6 @@ namespace BusinessLogic.Services
         {
             return mapper.Map<List<CategoryDto>>(context.Categories.ToList());
         }
+
     }
 }
