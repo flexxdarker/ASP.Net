@@ -30,8 +30,11 @@ namespace BusinessLogic.Services
 
         public void Delete(int id)
         {
+            // delete product by id
             var product = context.Products.Find(id);
-            if (product != null) { return; }
+
+            if (product == null) return; // TODO: throw exception
+
             context.Remove(product);
             context.SaveChanges();
         }

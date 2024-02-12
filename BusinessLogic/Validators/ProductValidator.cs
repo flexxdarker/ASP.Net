@@ -14,15 +14,15 @@ namespace DataAccess.Model.Validators
                 .Matches("[A-Z].*").WithMessage("{PropertyName} must starts with uppercase letter.");
             RuleFor(x => x.CategoryId)
                 .NotEmpty();
-            RuleFor(x => x.Description)
-                 .Length(10, 50000)
-                 .Matches("[A-Z].*").WithMessage("{PropertyName} must starts with uppercase letter.");
+            //RuleFor(x => x.Description)
+            //     .Length(10, 50000)
+            //     .Matches("[A-Z].*").WithMessage("{PropertyName} must starts with uppercase letter.");
             RuleFor(x => x.Price)
                 .NotEmpty()
                 .GreaterThanOrEqualTo(0).WithMessage("{PropertyName} must be more than 0");
-            RuleFor(x => x.Discount)
-                .NotEmpty()
-                .GreaterThanOrEqualTo(0).WithMessage("{PropertyName} must be more than 0");
+            //RuleFor(x => x.Discount)
+            //    .NotEmpty()
+            //    .GreaterThanOrEqualTo(0).WithMessage("{PropertyName} must be more than 0");
             RuleFor(x => x.ImageUrl)
                 .NotEmpty()
                 .Must(LinkMustBeAUri).WithMessage("{PropertyName} must be a valid URL address");

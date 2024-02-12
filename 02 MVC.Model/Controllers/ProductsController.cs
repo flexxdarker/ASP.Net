@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogic.DTOs;
 using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using DataAccess.Model.Data;
 using DataAccess.Model.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -80,11 +81,8 @@ namespace DataAccess.Model.Controllers
             }
 
             productService.Edit(model);
-
             return RedirectToAction(nameof(Index));
         }
-
-
 
         public IActionResult Delete(int id)
 		{

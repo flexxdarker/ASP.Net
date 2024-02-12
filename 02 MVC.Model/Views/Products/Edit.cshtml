@@ -12,12 +12,17 @@
         <input asp-for=Price type="number" min="0" class="form-control" placeholder="Enter price ($)">
         <span asp-validation-for="Price" class="form-text text-danger"></span>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
         <label asp-for=Discount class="form-label">Discount</label>
         <input asp-for=Discount type="number" min="0" class="form-control" placeholder="Enter discount (%)">
         <span asp-validation-for="Discount" class="form-text text-danger"></span>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+        <label asp-for=Rating class="form-label">Rating</label>
+        <input asp-for=Rating type="number" class="form-control" placeholder="Enter rating">
+        <span asp-validation-for="Rating" class="form-text text-danger"></span>
+    </div>
+    <div class="col-md-12">
         <label asp-for=CategoryId class="form-label">State</label>
         <select asp-for=CategoryId asp-items=ViewBag.Categories class="form-select">
             <option disabled selected>Choose...</option>
@@ -30,7 +35,7 @@
     </div>
     <div class="col-12">
         <label asp-for=Description class="form-label">Description</label>
-        <textarea asp-for=Description class="form-control" rows="3" placeholder="Enter description"></textarea>
+        <textarea id="description-input" asp-for=Description class="form-control" rows="3" placeholder="Enter description"></textarea>
         <span asp-validation-for="Description" class="form-text text-danger"></span>
     </div>
 
@@ -47,6 +52,10 @@
         <a asp-action="Index" class="btn btn-danger w-100">Back</a>
     </div>
     <div class="col-md-6">
-        <button type="submit" class="btn btn-success w-100">Edit Product</button>
+        <button type="submit" class="btn btn-success w-100">Submit</button>
     </div>
 </form>
+
+@section Scripts {
+    <partial name="_FroalaEditorPartial.cshtml" model='new { Selector = "#description-input"}' />
+}
