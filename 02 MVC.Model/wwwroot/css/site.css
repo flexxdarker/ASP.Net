@@ -48,3 +48,6 @@
 .zoom:hover {
     transform: scale(3.2);
 }
+.texts{
+    text-decoration: none;
+}
