@@ -22,7 +22,7 @@
             <p class="card-text fs-4">@Model.Price$ - @Model.CategoryName</p>
             @if (Model.InStock == true)
             {
-                 <a href="#" class="btn btn-success my-3">Buy</a>
+                <a type="button" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path" class="btn btn-danger text-dark mb-1">Buy</a>
             }
             else
             {

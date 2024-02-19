@@ -33,9 +33,9 @@
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
                 @if (User.IsInRole("Admin"))
-                {   
-                    <div class="checkbox mb-3">
-                        <label asp-for="Input.AdminUser" class="form-label">
+                {
+                    <div class="checkbox mb-3 text-lg-start check">
+                        <label asp-for="Input.AdminUser" class="form-label ">
                             <input class="form-check-input" asp-for="Input.AdminUser" />
                             @Html.DisplayNameFor(m => m.Input.AdminUser)
                         </label>

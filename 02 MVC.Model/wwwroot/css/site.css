@@ -51,3 +51,30 @@
 .texts{
     text-decoration: none;
 }
+.check input:checked{
+    background-color:red;
+    box-shadow: 0px 0px 0.1px 0.1px red;
+    border: 0.1px solid red;
+}
+.red-back{
+    color: red;
+}
+.red-back-links {
+    color: red;
+}
+.red-back-links:hover{
+    color:darkred;
+}
+.red-back-links:active{
+    background-color:red;
+}
+.red-back-links:enabled{
+    background-color:red;
+}
+.cart-item{
+    text-decoration: none;
+    color:white;
+}
+.cart-item:hover{
+    color:lightgray;
+}

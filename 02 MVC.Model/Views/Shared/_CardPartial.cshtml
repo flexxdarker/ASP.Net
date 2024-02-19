@@ -19,7 +19,7 @@
         </p>
         <div>
             <a type="button" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path" class="btn btn-danger text-dark mb-1">Add to Cart</a>
-            <button type="button" class="btn btn-light mb-1 text-dark">Buy Now</button>
+            <a asp-controller="Orders" asp-action="Create" class="btn btn-light mb-1 text-dark">Buy Now</a>
         </div>
     </div>
 </div>

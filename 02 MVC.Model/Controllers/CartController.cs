@@ -26,16 +26,12 @@ namespace _02_MVC.Model.Controllers
         {
             cartService.Add(id);
 
-            //ViewBag.ToastMessage = "Product added to your cart successfully!";
-            TempData["ToastMessage"] = "Product added to your cart successfully!";
-
             return Redirect(returnUrl);
         }
 
         public IActionResult Remove(int id, string returnUrl)
         {
             cartService.Delete(id);
-            TempData["ToastMessage"] = "Product removed from your cart successfully!";
 
             return Redirect(returnUrl);
         }

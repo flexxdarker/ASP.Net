@@ -21,7 +21,7 @@
 					<img height="40" class="rounded-2 zoom" src="@i.ImageUrl" alt="@i.Name" />
 				</th>
 				<td class="text-white">
-					@i.Name
+					<a asp-controller="Products" asp-action="Details" class="cart-item" asp-route-id="@i.Id" asp-route-returnUrl="@Context.Request.Path">@i.Name</a>
 					@if (i.Discount > 0)
 					{
 						<span class="badge bg-danger text-black">SALE</span>
@@ -42,7 +42,7 @@
 	</tbody>
 </table>
 <div>
-	<a asp-controller="Orders" asp-action="Create" class="btn btn-success mt-3">Confirm</a>
+	<a asp-controller="Orders" asp-action="Create" class="btn btn-danger mt-3">Make an order</a>
 </div>
 
-<p>Items: @Model.Count </p>
+<p>Items: @Model.Count</p>

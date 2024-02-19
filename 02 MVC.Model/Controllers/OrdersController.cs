@@ -23,8 +23,6 @@ namespace _02_MVC.Model.Controllers
         public IActionResult Create()
         {
             ordersService.Create(UserId);
-            TempData["ToastMessage"] = "Order confirmed successfully!";
-
             return RedirectToAction(nameof(Index));
         }
     }

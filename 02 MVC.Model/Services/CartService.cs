@@ -10,62 +10,62 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {
-	public class CartService : ICartService
+    public class CartService : ICartService
 	{
-		const string key = "cart_items_key";
-		private readonly IProductsService productsService;
-		private readonly HttpContext httpContext;
+        const string key = "cart_items_key";
+        private readonly IProductsService productsService;
+        private readonly HttpContext httpContext;
 
-		public CartService(IProductsService productsService, IHttpContextAccessor contextAccessor)
-		{
-			this.productsService = productsService;
-			httpContext = contextAccessor.HttpContext ?? throw new Exception();
-		}
-
-		private List<int> GetCartItems()
-		{
-			return httpContext.Session.Get<List<int>>(key) ?? new();
-		}
-		private void SaveCartItems(List<int> items)
-		{
-			httpContext.Session.Set(key, items);
-		}
-
-		public void Add(int id)
-		{
-			var ids = GetCartItems();
-			ids.Add(id);
-
-			SaveCartItems(ids);
-		}
-
-		public IEnumerable<ProductDto> GetProducts()
-		{
-			var ids = GetCartItems();
-			return productsService.Get(ids);
-		}
-
-		public int GetCount()
-		{
-			return GetCartItems().Count;
-		}
-
-		public void Delete(int id)
-		{
-			var ids = GetCartItems();
-			ids.Remove(id);
-
-			SaveCartItems(ids);
-		}
-
-        public IEnumerable<int> GetProducIds()
+        public CartService(IProductsService productsService, IHttpContextAccessor contextAccessor)
         {
-			return GetCartItems();
+            this.productsService = productsService;
+            httpContext = contextAccessor.HttpContext ?? throw new Exception();
         }
 
-		public int Summ()
-		{
-			return 2;
-		}
-	}
+        private List<int> GetCartItems()
+        {
+            return httpContext.Session.Get<List<int>>(key) ?? new();
+        }
+        private void SaveCartItems(List<int> items)
+        {
+            httpContext.Session.Set(key, items);
+        }
+
+        public void Add(int id)
+        {
+            var ids = GetCartItems();
+            ids.Add(id);
+
+            SaveCartItems(ids);
+        }
+
+        public IEnumerable<ProductDto> GetProducts()
+        {
+            var ids = GetCartItems();
+            return productsService.Get(ids);
+        }
+
+        public void Delete(int id)
+        {
+            var ids = GetCartItems();
+            ids.Remove(id);
+
+            SaveCartItems(ids);
+        }
+
+        public int GetCount()
+        {
+            return GetCartItems().Count;
+        }
+
+        public bool IsExists(int id)
+        {
+            return GetCartItems().Contains(id);
+        }
+
+        public IEnumerable<int> GetProductIds()
+        {
+            return GetCartItems();
+        }
+    }
 }
